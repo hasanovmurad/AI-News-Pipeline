@@ -17,7 +17,7 @@ This is the first project of my AI Portfolio. It is a Python-based data pipeline
 
 ## 📂 Project Structure
 - `main.py`: The core script that executes the pipeline.
-- `ai_news.csv`: The generated output file containing the latest news.
+- *_news.csv: Automated output files generated based on the search topic.
 - `venv/`: Virtual environment to keep dependencies isolated.
 
 ## 📈 Learning Journey
