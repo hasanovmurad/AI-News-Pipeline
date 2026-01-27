@@ -1,0 +1,22 @@
+2026-01-27 14:56:07 - INFO - ===== PIPELINE START =====
+2026-01-27 14:56:07 - INFO - Initiating fetch for topic: artificial intelligence
+2026-01-27 14:56:08 - INFO - Successfully retrieved 93 articles from API.
+2026-01-27 14:56:08 - INFO - Database sync complete. New: 93, Duplicates skipped: 0
+2026-01-27 14:56:08 - INFO - CSV backup generated.
+2026-01-27 14:56:08 - INFO - ===== PIPELINE END =====
+2026-01-27 14:56:33 - INFO - ===== PIPELINE START =====
+2026-01-27 14:56:33 - INFO - Initiating fetch for topic: artificial intelligence
+2026-01-27 14:56:34 - INFO - Successfully retrieved 93 articles from API.
+2026-01-27 14:56:34 - INFO - Database sync complete. New: 93, Duplicates skipped: 0
+2026-01-27 14:56:34 - INFO - CSV backup generated.
+2026-01-27 14:56:34 - INFO - ===== PIPELINE END =====
+2026-01-27 14:57:00 - INFO - ===== PIPELINE START =====
+2026-01-27 14:57:00 - INFO - Initiating fetch for topic: artificial intelligence
+2026-01-27 14:57:01 - ERROR - API Request failed: 401 Client Error: Unauthorized for url: https://newsapi.org/v2/everything?q=artificial%20intelligence&apiKey=fd6576ffc0a14ae0a3481f9de099747
+2026-01-27 14:57:01 - INFO - ===== PIPELINE END =====
+2026-01-27 14:57:29 - INFO - ===== PIPELINE START =====
+2026-01-27 14:57:29 - INFO - Initiating fetch for topic: artificial intelligence
+2026-01-27 14:57:29 - INFO - Successfully retrieved 93 articles from API.
+2026-01-27 14:57:30 - INFO - Database sync complete. New: 93, Duplicates skipped: 0
+2026-01-27 14:57:30 - INFO - CSV backup generated.
+2026-01-27 14:57:30 - INFO - ===== PIPELINE END =====
