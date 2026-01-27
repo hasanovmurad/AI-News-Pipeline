@@ -26,3 +26,9 @@ In this first week, I mastered:
 2. Handling API authentication and requests.
 3. Data cleaning and structural transformation with Pandas.
 4. Version control best practices with Git.
+
+## 🤖 Automation
+The pipeline is fully automated using a Windows Batch script (`run_pipeline.bat`) and Windows Task Scheduler.
+- **Schedule:** Runs daily at 08:00 AM.
+- **Process:** Activates `venv`, fetches news, updates the SQLite database, and regenerates the visualization chart.
+- **Reliability:** Uses a logging system (to be implemented) to track background execution.
