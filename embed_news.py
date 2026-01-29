@@ -16,19 +16,19 @@ def generate_database_embeddings():
     cursor = conn.cursor()
     
     logging.info("Fetching titles from SQL...")
-    cursor.execute("SELECT title FROM articles")
+    cursor.execute("SELECT title, description FROM articles")
     rows = cursor.fetchall()
     
     # Flatten the list of tuples into a simple list of strings
-    titles = [row[0] for row in rows if row[0] is not None]
+    texts = [f"{r[0]} - {r[1]}" for r in rows if r[0] is not None]
     
-    if not titles:
+    if not texts:
         logging.warning("No titles found in the database. Run your main.py first!")
         return
 
     # 3. Convert ALL titles to math (Embeddings)
-    logging.info(f"Turning {len(titles)} titles into vectors. Please wait...")
-    embeddings = model.encode(titles, show_progress_bar=True)
+    logging.info(f"Turning {len(texts)} titles into vectors. Please wait...")
+    embeddings = model.encode(texts, show_progress_bar=True)
 
     # 4. Save the results
     # We save these as a .npy file (a format for fast math loading)

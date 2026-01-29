@@ -31,7 +31,8 @@ def save_to_database(articles):
                 title TEXT UNIQUE, 
                 source TEXT,
                 date TEXT,
-                url TEXT
+                url TEXT,
+                description TEXT
             )
         ''')
         
