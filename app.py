@@ -2,6 +2,7 @@ import streamlit as st
 import os
 import sqlite3
 import numpy as np
+import subprocess
 from dotenv import load_dotenv
 from openai import OpenAI
 from sentence_transformers import SentenceTransformer, util, CrossEncoder
@@ -104,6 +105,23 @@ with st.sidebar:
         st.rerun()
     
     st.info("System: RAG Pipeline v2.0\nModels: Llama 3.1 + MiniLM")
+    st.divider()
+    st.header("🔄 Data Management")
+
+    if st.button("Fetch & Embed Latest News"):
+        with st.status("Running Pipeline...", expanded=True) as status:
+            st.write("1. Scraping latest AI news...")
+            # Runs your main.py script
+            subprocess.run(["python", "main.py"])
+            
+            st.write("2. Generating new vector embeddings...")
+            # Runs your embed_news.py script
+            subprocess.run(["python", "embed_news.py"])
+            
+            status.update(label="Pipeline Complete!", state="complete", expanded=False)
+        
+        st.success("Database is now up to date!")
+        st.rerun() # Refresh the app to show new stats
 
 # --- 5. MAIN CHAT INTERFACE ---
 st.title("🌐 AI News Intelligence")

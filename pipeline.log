@@ -36,3 +36,9 @@
 2026-01-29 19:15:33 - INFO - Database sync complete. New: 0, Duplicates skipped: 91
 2026-01-29 19:15:33 - INFO - CSV backup generated.
 2026-01-29 19:15:33 - INFO - ===== PIPELINE END =====
+2026-01-30 15:51:17 - INFO - ===== PIPELINE START =====
+2026-01-30 15:51:17 - INFO - Initiating fetch for topic: artificial intelligence
+2026-01-30 15:51:18 - INFO - Successfully retrieved 91 articles from API.
+2026-01-30 15:51:18 - INFO - Database sync complete. New: 2, Duplicates skipped: 89
+2026-01-30 15:51:18 - INFO - CSV backup generated.
+2026-01-30 15:51:18 - INFO - ===== PIPELINE END =====
