@@ -124,22 +124,46 @@ if user_input := st.chat_input("Ask about AI trends, jobs, or news..."):
         st.markdown(user_input)
 
     with st.chat_message("assistant"):
-        with st.spinner("Thinking..."):
-            # 1. Fetch relevant news
+        with st.spinner("Analyzing and Verifying..."):
+            # 1. Fetch context
             context = get_context(user_input)
             
-            # 2. Build AI Prompt
-            system_instruction = f"You are a professional News Analyst. Use this data: {context}. If unsure, say you don't know."
-            
-            # 3. Call LLM
+            # 2. Generate the primary answer
+            system_instruction = f"You are a professional News Analyst. Use this data: {context}."
             response = client.chat.completions.create(
                 model="llama-3.1-8b-instant",
                 messages=[{"role": "system", "content": system_instruction}] + st.session_state.messages
             )
-            
             answer = response.choices[0].message.content
+
+            # 3. NEW: Self-Evaluation Logic (The Groundedness Check)
+            eval_prompt = f"""
+            Compare the following ANSWER to the provided CONTEXT. 
+            Rate the 'Groundedness' (how much the answer stays true to the context) on a scale of 1 to 10.
+            1 = Made up entirely. 10 = Fully supported by the news.
+            Output ONLY the number.
+            
+            CONTEXT: {context}
+            ANSWER: {answer}
+            """
+            eval_response = client.chat.completions.create(
+                model="llama-3.1-8b-instant",
+                messages=[{"role": "user", "content": eval_prompt}]
+            )
+            confidence_score = eval_response.choices[0].message.content.strip()
+
+            # 4. Display results with a "Trust Meter"
             st.markdown(answer)
             
+            # Show a colored status based on the score
+            score_num = int(confidence_score) if confidence_score.isdigit() else 5
+            if score_num >= 8:
+                st.success(f"Confidence Score: {score_num}/10 (High Reliability)")
+            elif score_num >= 5:
+                st.warning(f"Confidence Score: {score_num}/10 (Moderate Reliability)")
+            else:
+                st.error(f"Confidence Score: {score_num}/10 (Low Reliability - Possible Hallucination)")
+
             with st.expander("📚 View Sources (Reranked)"):
                 st.write(context)
 
