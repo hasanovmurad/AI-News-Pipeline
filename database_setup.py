@@ -31,4 +31,12 @@ cursor.execute('''
 connection.commit()
 connection.close()
 
+conn = sqlite3.connect('news_data.db')
+conn.execute('''CREATE TABLE IF NOT EXISTS chat_history 
+                (id INTEGER PRIMARY KEY AUTOINCREMENT, 
+                 role TEXT, 
+                 content TEXT, 
+                 timestamp DATETIME DEFAULT CURRENT_TIMESTAMP)''')
+conn.close()
+
 print("Database initialized and sample data inserted successfully!")
